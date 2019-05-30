@@ -6,3 +6,21 @@ postorder 左右根 45231
     2   3
    / \
   4   5
+
+recursive 做法：
+1.Preorder 
+      visit the root
+      traverse the left subtree， call preorder（leftSubtree）
+      traverse the right subtree， call preorder（rightSubtree）
+
+
+2.Inorder
+      traverse the left subtree, call inorder(leftSubtree)
+      visit the root 
+      traverse the right subtree， call inorder（rightSubtree）
+      
+
+3.Postorder
+      traverse the left subtree， call postorder（leftSubtree）
+      traverse the right subtree， call postorder（rightSubtree）
+      visit the root
