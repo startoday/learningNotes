@@ -1,0 +1,25 @@
+#插入删除都在一侧（stack top）进行
+#LIFO
+#可用函数
+empty()  //空返回真
+size（）  //返回元素个数
+top （）  //return stack top元素
+push（）   //往顶上加元素（return void）
+pop（）   //弹出 top 的元素 （return void）
+
+
+#初始化方法
+1.直接声明
+stack<int> stack1; 
+
+2.用deque初始化，内部容器为deque
+deque<int> baseDeque(7, 17);
+stack<int> stack2(baseDeque);
+
+3.其他内部结构的初始化
+stack<int, vector<int> > stack3;   //stack3内部结构为vector
+
+4.初始化from其他结构
+vector<int> baseVector(7, 177);
+stack<int, vector<int> > stack4(baseVector);  //用vector初始化stack4，###必须要主动指定内部容器类型（vector）
+
