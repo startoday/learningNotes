@@ -1,3 +1,6 @@
+##一些algorithm 库中的常用函数及用法例子
+
+
 1）max(),min()
 
 void MaxAndMin()
