@@ -10,8 +10,9 @@ pop（）   //弹出 top 的元素 （return void）
 #时间复杂度 O（1）
 
 #初始化方法
-1.直接声明
-stack<int> stack1; 
+1.直接声明， 用另一个stack初始化
+stack<int> stack; stack.push(7) //1 element in stack
+stack<int> stack1(stack);    //stack1 also has 1 element as stack
 
 2.用deque初始化
 deque<int> baseDeque(7, 17); //baseDeque has 7 elements
