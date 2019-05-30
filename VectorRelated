@@ -1,0 +1,10 @@
+for vector<vector<xxx>> v2d:
+
+int size_row = v2d.size();
+int size_col = v2d[0].size();
+
+一个待查的问题 关于 empty 和 size（） 
+[]
+[[]]
+
+对于这种2d empty 只包上面不包下面
