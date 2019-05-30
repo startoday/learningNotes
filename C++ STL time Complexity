@@ -5,7 +5,7 @@ map, set, multimap, and multiset
 查看:O(logN)
 删除:O(logN)
 
-hash_map, hash_set, hash_multimap, and hash_multiset （
+hash_map, hash_set, hash_multimap, and hash_multiset （unordered_xx)
 哈希表实现，不同操作的时间复杂度为：
 插入:O(1)，最坏情况O(N)。
 查看:O(1)，最坏情况O(N)。
