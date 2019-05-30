@@ -1,11 +1,11 @@
-Preorder 根左右 12453
-Inorder 左根右 42513
-postorder 左右根 45231
-      1
-     / \
-    2   3
-   / \
-  4   5
+Preorder 根左右 12453  14623
+Inorder 左根右 42513   64132
+postorder 左右根 45231  64321
+      1                  1
+     / \                / \
+    2   3              4   2
+   / \                /    /
+  4   5              6    3
 
 recursive 做法：
 1.Preorder 
