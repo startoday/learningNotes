@@ -3,7 +3,7 @@
 #可用函数
 empty()  //空返回真
 size（）  //返回元素个数
-top （）  //return stack top元素
+top （）  //return stack top元素, 只是peek，并不踢出/改变stack
 push（）   //往顶上加元素（return void）
 pop（）   //弹出 top 的元素 （return void）
 
