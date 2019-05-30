@@ -8,3 +8,10 @@ int size_col = v2d[0].size();
 [[]]
 
 对于这种2d empty 只包上面不包下面
+
+
+1.insert()
+把一个vector里的元素`追加`放入另外一个vector
+std::vector<int> src;
+std::vector<int> dest;
+dest.insert(dest.end(), src.begin(), src.end());
