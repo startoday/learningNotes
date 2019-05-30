@@ -1,0 +1,8 @@
+Preorder 根左右 12453
+Inorder 左根右 42513
+postorder 左右根 45231
+      1
+     / \
+    2   3
+   / \
+  4   5
