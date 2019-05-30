@@ -8,10 +8,8 @@ void MaxAndMin()
     cout << "较小值为：" << min(maxI,maxJ) << endl;
 }
 
-max和min就是取两个数中的最大值与最小值。
 
-
-（2）由于下面有些方法的示例需要打印vector，所以我在这里先实现vector的打印算法
+/* (2) an example of using iterator to print vector
 
 void PrintVector(vector<int> v)
 {
@@ -23,45 +21,22 @@ void PrintVector(vector<int> v)
     cout << endl;
 }
 
-这里使用迭代器来访问vector，并按顺序打印结果。
+*/
 
-
-（3）sort(),reverse()
-
-void SortAndReverse()
-{
-    vector<int> myVector;
-    myVector.push_back(2);
-    myVector.push_back(9);
-    myVector.push_back(1);
-    myVector.push_back(0);
-    myVector.push_back(7);
- 
-    cout << "排序前的序列：";
-    PrintVector(myVector);
- 
-    sort(myVector.begin(), myVector.end());
-    cout << "升序排序后的序列：";
-    PrintVector(myVector);
- 
-    reverse(myVector.begin(), myVector.end());
-    cout << "降序排序后的序列：";
-    PrintVector(myVector);
-}
-
-sort是升序排序函数，reverse是降序排序函数。vector本身自己也有sort可以直接调用。
+(3)sort(),reverse()
+sort(myVector.begin(), myVector.end());
+sort是升序排序函数，reverse是降序排序函数
+reverse(myVector.begin(), myVector.end());
 
 
 （4）find()
-
+find return a iterator and will return vector.end() if not found
 void FindVector()
 {
     vector<int> myVector;
     myVector.push_back(2);
     myVector.push_back(4);
     myVector.push_back(6);
-    myVector.push_back(8);
-    myVector.push_back(0);
  
     vector<int>::iterator vIterator;
     vIterator = find(myVector.begin(), myVector.end(), 6);
@@ -75,11 +50,9 @@ void FindVector()
     }
 }
 
-find函数使用迭代器来进行查找某个数，如果到达end位置还没有找到，则表示没有这个数。迭代器会在第一次出现该数字时返回。
-
 
 （5）equal()
-
+equal()可以判断两个vector是否相等，equal会根据每一个位置去进行比较。
 void EqualVector()
 {
     vector<int> myVector1;
@@ -105,11 +78,11 @@ void EqualVector()
     }
 }
 
-equal()可以判断两个vector是否相等，equal会根据每一个位置去进行比较。
+
 
 
 （6）merge()
-
+merge可以实现两个有序vector的合并，合并后的vector依然是有序的。合并后的vector放到新的结果集中，需要事先指定其大小。
 void MergeVector()
 {
     vector<int> myVector1;
@@ -136,7 +109,7 @@ void MergeVector()
     PrintVector(myResult);
 }
 
-merge可以实现两个有序vector的合并，合并后的vector依然是有序的。合并后的vector放到新的结果集中，需要事先指定其大小。
+
 
 
 （7）swap()
@@ -151,8 +124,6 @@ void SwapObject()
     cout << "交换之后两个数的值：";
     cout << "i = " << i << ";j = " << j << endl;
 }
-
-swap可以用来交换两个数。
 
 
 
@@ -375,8 +346,8 @@ void Heap()
 }
 
 上面涉及到堆的操作，make_heap用来建立一个大顶堆或者小顶堆。向堆中插入一个元素需要先向vector中插入，然后再调用push_heap,push_heap的过程就是调整堆的过程。  同样的，从堆中取出一个元素，需要先调整堆，把需弹出元素放到vector末尾，然后再删除元素。
+
 --------------------- 
-作者：乞力马扎罗的雪CYF 
-来源：CSDN 
+参考作者：乞力马扎罗的雪CYF 
 原文：https://blog.csdn.net/CHENYUFENG1991/article/details/52648523 
-版权声明：本文为博主原创文章，转载请附上博文链接！
+
