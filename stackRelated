@@ -9,7 +9,7 @@ pop（）   //弹出 top 的元素 （return void）
 
 #时间复杂度 O（1）
 
-#初始化方法
+#初始化方法：原则 “创建堆栈时，不能在初始化列表中用对象来初始化，但是可以用另一个容器来初始化，只要堆栈的底层容器类型和这个容器的类型相同”
 1.直接声明/ 用另一个stack初始化
 stack<int> stack; stack.push(7) //1 element in stack
 stack<int> stack1(stack);    //stack1 also has 1 element as stack
@@ -25,3 +25,6 @@ stack<int, vector<int> > stack3;   //stack3 is empty using vector
 vector<int> baseVector(17, 177); //baseVector has 17 elements
 stack<int, vector<int> > stack4(baseVector);  //用baseVector初始化stack4，size=17; ##必须要主动指定内部容器类型（vector）##
 
+
+参考：
+http://c.biancheng.net/view/478.html 
