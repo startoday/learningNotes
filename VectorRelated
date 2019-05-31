@@ -29,3 +29,6 @@ void insert (iterator position, InputIterator first, InputIterator last);
 std::vector<int> src;
 std::vector<int> dest;
 dest.insert(dest.end(), src.begin(), src.end());
+
+
+参考：http://www.cplusplus.com/reference/vector/vector/insert/
