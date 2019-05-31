@@ -4,3 +4,6 @@ to_string()
 eg:
 int n = 123;
 string str = to_string(n);
+
+2. char and int conversion
+int x = character - '0'
