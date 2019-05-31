@@ -1,3 +1,6 @@
+Set是自动进行排序的，合并重复的对象元素，是可反转的，且键值是唯一的。（key就是value）
+
+
 
 1. To find max and min in a set:
 Using set.begin() and set.end() methods
