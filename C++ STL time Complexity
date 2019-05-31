@@ -11,3 +11,42 @@ hash_map, hash_set, hash_multimap, and hash_multiset （unordered_xx)
 查看:O(1)，最坏情况O(N)。
 删除:O(1)，最坏情况O(N)。
 
+vector: 
+优 array 高效随机访问// 唯一和c兼容的容器
+劣 内部插入，删除，慢， 一旦超过原大小resize很贵
+
+List：
+nice 插入删除，连接两个list O（1）
+bad 不支持random access
+
+Deque array 和list 的折中； 是连续内存容器（多个内存块像list一样连接）
+缺点宛如vector，比vector： 可以两侧操作
+
+
+对于search：
+对于序列容器需要分两种情况，
+是否排序，1)对于已经排序的序列容器，使用binary_search(O(logN))
+2)未排序的序列容器二分查找不可用 best(O(n))。
+
+对于关联容器，
+存储的时候存储的是一棵红黑树，总是能达到对数时间复杂度(O(logN))的效率，因为关联容器是按照键值排好序的。
+但是对于关联容器会改变插入的储存顺序，所以对顺序有要求则避免使用
+
+
+1） 如果需要随机访问，用vector
+
+2） 如果存储元素的数目已知，用vector
+
+3） 需要任意位置随机插入删除，用list
+
+4） 只有需要更多在容器的首部尾部插入删除元素，用deque
+
+5） 元素是复杂结构用list，也可以用vector存储指针(需要额外的精力去维护内存)，看需求
+
+6） 如果操作是基于键值，用set map
+
+7） 如果需要经常的搜索，用map set
+
+8） map set 的区别是map中的元素都是pair
+
+ref：https://blog.csdn.net/CSND_Ayo/article/details/72574924
