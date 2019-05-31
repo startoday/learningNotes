@@ -1,0 +1,6 @@
+1. int to string conversion
+to_string()
+
+eg:
+int n = 123;
+string str = to_string(n);
