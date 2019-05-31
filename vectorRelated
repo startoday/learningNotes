@@ -9,6 +9,7 @@ int size_col = v2d[0].size();
 
 对于这种2d empty 只包上面不包下面
 
+尽量使用empty而不是size()==0 来判断容器是否为空
 
 1.insert() （3种）
 A. 插入一个元素
@@ -16,14 +17,19 @@ iterator insert (iterator position, const value_type& val);
 例子：
   it = myvector.begin();  //另外，it 是begin时是在最前面（第0个元素前）插入， 
   it = myvector.insert ( it , 200 );
-   
+  v.insert(v.begin()+2,1);   // 在第二个元素前插入新元素 
+  v.insert(v.end(),3);       //end（）是在在末尾追加新元素
+  vector<int>::iterator iter = find( v1.begin(), v1.end(), 3); //利用find function 找到iter指定位置
+  if( iter !=  v1.end() ){    //也是用iter是否是end（）来看表中有木有这个元素
+    v1.insert( iter, 6 );
+  }
+
 
 B. 插入几个相同元素， 第二个参数是几个 
 void insert (iterator position, size_type n, const value_type& val);
 例子：
  myvector.insert (it,2,300); //此时之前定义的it已经不再valid了，需要重新assign 
- v.insert(v.begin()+2,1);   // 在第二个元素前插入新元素 
- v.insert(v.end(),3);       //end（）是在在末尾追加新元素
+
 
 C 插入一个range；传的参数：加入位置，要加的range，需要用iterator表示
 void insert (iterator position, InputIterator first, InputIterator last);
@@ -34,4 +40,42 @@ std::vector<int> dest;
 dest.insert(dest.end(), src.begin(), src.end());
 
 
+
+
 参考：http://www.cplusplus.com/reference/vector/vector/insert/
+
+
+2.初始化方式
+eg:有另一数组 int  v1[10] = {0,1,0,0,3,0,0,4,4,4};
+
+A.循环增加
+vector<int> v2 (10) //初始化size为10
+//或者 v2.reserve(10)
+for( int i=0; i<10; i++ )
+{
+     v2.push_back(v1[i]);  //增加一个元素
+}
+
+B.使用原数组的指针作为迭代器
+vector<int> v3(&v1[0],&v1[9]);
+
+C.insert来实现
+vector<int> v4;
+v4.reserve(10);
+v4.insert(v4.begin(), &v1[0], &v[9]);
+
+D.copy
+vector<int> v5(10);
+
+copy(v5.begin(), &v1[0], &v1[9]);
+
+原始数组的元素指针可以作为迭代器来使用。
+原则：尽量使用reserve来减少不必要的内存分配次数。//如果已知大小的话
+
+
+3.遍历的几种方式
+
+
+
+
+
