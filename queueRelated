@@ -1,6 +1,8 @@
-back() 返回最后一个元素 
-empty() 如果队列空则返回真 
-front() 返回第一个元素 
-pop() 删除第一个元素 
-push() 在末尾加入一个元素 
-size() 返回队列中元素的个数 
+queue<Type> que  //定义一个queue
+que.empty()    //空返回真
+que.push() // 向队列最后加入元素
+que.size() // return size
+que.front() // return首个元素
+que.back() // return最后一个元素
+que.pop() // 删除队首元素
+
