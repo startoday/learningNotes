@@ -1,10 +1,10 @@
-//??例子有问题啊什么鬼
+
 1. To find max and min in a set:
 Using set.begin() and set.end() methods
 Approach: Elements in a set are stored in sorted order. 
 So the minimum element of the set will reside in the first element and the maximum element in the last element. 
 Therefore, this first and last element can be fetched with the help of set.begin() and set.end() methods respectively.
-
+//例子有问题， 应该是 *（--my_set.end())因为end并不是存在的最后一个元素
 eg:
 int findMax(set<int> my_set) 
 { 
@@ -32,3 +32,21 @@ int findMin(set<int> my_set)
 } 
 
 ref: https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/ 
+
+
+2. find（） 查找某元素所在位置，return 一个 iterator， 如果没有，会return set.end（）
+//似乎set 没有contain这个function， 但是find 可以作为代替
+
+例子：
+    unordered_set<string> sampleSet = { "geeks1", "for", "geeks2" }; 
+  
+    // use of find() function 
+    if (sampleSet.find("geeks1") != sampleSet.end()) { 
+        cout << "element found." << endl; 
+    } 
+    else { 
+        cout << "element not found" << endl; 
+    } 
+    
+    
+ ref：https://www.geeksforgeeks.org/unordered_set-find-function-in-c-stl/ 
