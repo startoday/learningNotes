@@ -10,8 +10,22 @@ int size_col = v2d[0].size();
 对于这种2d empty 只包上面不包下面
 
 
-1.insert()
-把一个vector里的元素`追加`放入另外一个vector
+1.insert() （3种）
+A. 插入一个元素
+iterator insert (iterator position, const value_type& val);
+例子：
+  it = myvector.begin();
+  it = myvector.insert ( it , 200 );
+
+B. 插入几个相同元素， 第二个参数是几个 
+void insert (iterator position, size_type n, const value_type& val);
+例子：
+ myvector.insert (it,2,300); //此时之前定义的it已经不再valid了，需要重新assign 
+
+C 插入一个range；传的参数：加入位置，要加的range，需要用iterator表示
+void insert (iterator position, InputIterator first, InputIterator last);
+
+例子：把一个vector里的元素append入另外一个vector
 std::vector<int> src;
 std::vector<int> dest;
 dest.insert(dest.end(), src.begin(), src.end());
