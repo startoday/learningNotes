@@ -1,0 +1,33 @@
+1. To find max and min in a set:
+Using set.begin() and set.end() methods
+Approach: Elements in a set are stored in sorted order. 
+So the minimum element of the set will reside in the first element and the maximum element in the last element. 
+Therefore, this first and last element can be fetched with the help of set.begin() and set.end() methods respectively.
+
+eg:
+int findMax(set<int> my_set) 
+{ 
+  
+    // Get the maximum element 
+    int max_element; 
+    if (!my_set.empty()) 
+        max_element = *my_set.end(); 
+  
+    // return the maximum element 
+    return max_element; 
+} 
+  
+// Function to find the minimum element 
+int findMin(set<int> my_set) 
+{ 
+  
+    // Get the minimum element 
+    int min_element; 
+    if (!my_set.empty()) 
+        min_element = *my_set.begin(); 
+  
+    // return the minimum element 
+    return min_element; 
+} 
+
+ref: https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-c-stl/ 
