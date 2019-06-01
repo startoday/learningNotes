@@ -7,10 +7,10 @@ Using set.begin() and set.end() methods
 Approach: Elements in a set are stored in sorted order. 
 So the minimum element of the set will reside in the first element and the maximum element in the last element. 
 Therefore, this first and last element can be fetched with the help of set.begin() and set.end() methods respectively.
-//例子有问题， 应该是 *（--my_set.end())因为end并不是存在的最后一个元素
+
+//来自ref的例子有问题， 应该是 *（--my_set.end())因为end并不是存在的最后一个元素
 eg:
-int findMax(set<int> my_set) 
-{ 
+int findMax(set<int> my_set) { 
   
     // Get the maximum element 
     int max_element; 
@@ -22,8 +22,7 @@ int findMax(set<int> my_set)
 } 
   
 // Function to find the minimum element 
-int findMin(set<int> my_set) 
-{ 
+int findMin(set<int> my_set) { 
   
     // Get the minimum element 
     int min_element; 
