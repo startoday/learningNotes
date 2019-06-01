@@ -60,22 +60,37 @@ ref: https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-
  值得注意的是set不允许重复元素，所以count是1 或者 0， 可以用来查找是否存在该元素，和countain一样
  运用也是 set.count(要找的东西）；
  
-begin() 返回指向第一个元素的迭代器
-clear() 清除所有元素
-count() 返回某个值元素的个数
-empty() 如果集合为空，返回true(真）
+ 4.insert（）
+由于排序决定了插入的位置，则set的插入只指定要插入的信息，不指定插入位置。//无法指定
+例如：string s(“basketball”);
+      aSet.insert(s);      //插入一个值
+      aSet.insert(B.begin(),B.end());  //插入来自另一个容器的range
+ 
+ 
+5.empty（）空返回true
+ 
+6.lower_bound() 返回指向大于（或等于）某值的第一个元素的迭代器
+  upper_bound() 返回大于某个值元素的迭代器
+ lower_bound()将key作为参数并返回一个iter，该迭代器指向集合中第一个不小于键参数的成员。
+ 同样，upper_bound()将key作为参数并返回一个iter，该迭代器指向集合中第一个大于键参数的成员。
+ 用法：如果有一个字符串集合，可用这两个方法获得一个这样的区间，即包含集合中从“b”到“f”的所有字符串。
+
+7.begin() 返回指向第一个元素的迭代器
 end() 返回指向最后一个元素之后的迭代器，不是最后一个元素
+
+
+
+
+
+
 equal_range() 返回集合中与给定值相等的上下限的两个迭代器
 erase() 删除集合中的元素
-find() 返回一个指向被查找到元素的迭代器
+clear() 清除所有元素
 get_allocator() 返回集合的分配器
-insert() 在集合中插入元素
-lower_bound() 返回指向大于（或等于）某值的第一个元素的迭代器
 key_comp() 返回一个用于元素间值比较的函数
 max_size() 返回集合能容纳的元素的最大限值
 rbegin() 返回指向集合中最后一个元素的反向迭代器
 rend() 返回指向集合中第一个元素的反向迭代器
 size() 集合中元素的数目
 swap() 交换两个集合变量
-upper_bound() 返回大于某个值元素的迭代器
 value_comp() 返回一个用于比较元素间的值的函数
