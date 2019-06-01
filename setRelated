@@ -71,21 +71,63 @@ ref: https://www.geeksforgeeks.org/find-maximum-and-minimum-element-in-a-set-in-
  
 6.lower_bound() 返回指向大于（或等于）某值的第一个元素的迭代器
   upper_bound() 返回大于某个值元素的迭代器
- lower_bound()将key作为参数并返回一个iter，该迭代器指向集合中第一个不小于键参数的成员。
- 同样，upper_bound()将key作为参数并返回一个iter，该迭代器指向集合中第一个大于键参数的成员。
+ lower_bound()将key作为参数并返回一个iter，该迭代器指向集合中第一个不小于该key的成员。
+ upper_bound()将key作为参数并返回一个iter，该迭代器指向集合中第一个大于该key的成员。
  用法：如果有一个字符串集合，可用这两个方法获得一个这样的区间，即包含集合中从“b”到“f”的所有字符串。
+// 返回小于当前元素的第一个可插入的位置
+iterator lower_bound(const key_type& x) const{
+  return t.lower_bound(x);
+}
 
-7.begin() 返回指向第一个元素的迭代器
+// 返回大于当前元素的第一个可插入的位置
+iterator upper_bound(const key_type& x) const{
+  return t.upper_bound(x);
+}
+
+
+7.equal_range() 返回集合中与给定值相等的上下限的两个迭代器（返回一个pair）即 lower和upper-bond
+//是二分法查找的，即时不存在这个元素（比较find） 也可以返回区间
+
+pair<iterator,iterator> equal_range (const value_type& val) const;
+例子：
+  set<int> myset;
+  for (int i=1; i<=5; i++) myset.insert(i*10);   // myset: 10 20 30 40 50
+
+  pair<const_iterator,const_iterator> ret;
+  ret = myset.equal_range(30);
+  cout << "the lower bound points to: " << *ret.first << '\n';  //30
+  cout << "the upper bound points to: " << *ret.second << '\n';  //40
+
+
+8.erase() 擦除单个元素或者区间内的元素
+
+// 擦除指定位置的元素, 会导致内部的红黑树重新排列
+void erase(iterator position){
+  typedef typename rep_type::iterator rep_iterator;
+  t.erase((rep_iterator&)position);
+}
+ 
+// 会返回擦除元素的个数, 其实就是标识set内原来是否有指定的元素
+size_type erase(const key_type& x){
+  return t.erase(x);
+}
+ 
+// 擦除指定区间的元素, 会导致红黑树有较大变化
+void erase(iterator first, iterator last){
+  typedef typename rep_type::iterator rep_iterator;
+  t.erase((rep_iterator&)first, (rep_iterator&)last);
+}
+
+ref：https://blog.csdn.net/zy20150613/article/details/78693579
+
+
+9.clear() 清除所有元素 return void
+
+
+10.begin() 返回指向第一个元素的迭代器
 end() 返回指向最后一个元素之后的迭代器，不是最后一个元素
 
 
-
-
-
-
-equal_range() 返回集合中与给定值相等的上下限的两个迭代器
-erase() 删除集合中的元素
-clear() 清除所有元素
 get_allocator() 返回集合的分配器
 key_comp() 返回一个用于元素间值比较的函数
 max_size() 返回集合能容纳的元素的最大限值
@@ -94,3 +136,25 @@ rend() 返回指向集合中第一个元素的反向迭代器
 size() 集合中元素的数目
 swap() 交换两个集合变量
 value_comp() 返回一个用于比较元素间的值的函数
+
+
+**回顾知识点 operator overload**
+set重载了==和<操作符，基本上都是调用RBTree的接口函数即可
+
+template <class Key, class Compare, class Alloc>
+inline bool operator==(const set<Key, Compare, Alloc>& x,
+                       const set<Key, Compare, Alloc>& y) {
+  return x.t == y.t;
+}
+ 
+template <class Key, class Compare, class Alloc>
+inline bool operator<(const set<Key, Compare, Alloc>& x,
+                      const set<Key, Compare, Alloc>& y) {
+  return x.t < y.t;
+}
+
+ref：https://blog.csdn.net/zy20150613/article/details/78693579 
+
+
+
+
