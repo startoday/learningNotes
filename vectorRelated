@@ -74,8 +74,48 @@ copy(v5.begin(), &v1[0], &v1[9]);
 
 
 3.遍历的几种方式
+方式1：for loop 循环
+for( int i=0; i<v1.size(); i++ ){
+       print(v1[i]);
+}
+缺点 不够简洁
+方式2：for+迭代器range
+typedef  vector<int>:: iterator   VIntIterator;
+VIntIterator  end = v1.end();
+for( VIntIterator  i=v1.begin(); i != end;  ++i ){
+     print( *i );
+}
 
+先计算end 不必要每次去重复计算end,vector的end()不是常数时间的，所以先缓存下来能提高效率。
+写算法的时候尽量使用!=比较迭代器，因为<对于很多非随机迭代器没有这个操作符。 
+这种方式也写起来比较繁琐。
 
+方式3：利用for_each (algorithm)
+//std::for_each is an STL algorithm 
+//it takes a collection of elements (in the form of a begin and end iterator) 
+//and a function (or function object), and applies the function on each element of the collection. 
 
+for_each( v1.begin(),  v1.end(),  print );
 
+std::vector<int> numbers = {1, 2, 3, 4, 5};
+std::for_each(begin(numbers), end(numbers), f);  //applies the function f on each element of numbers.
 
+使用算法的时候和函数对象function object 例子
+class OutPut{
+public:
+       void operator ()( double  i ){
+          std::cout <<  i;
+       }
+}
+for_each( v1.begin(), v1.end(), OutPut );
+
+对于for_each() 的一点补充：
+//bad usage
+std::for_each(begin(numbers), end(numbers), [](int number)
+{
+    // do something with number
+});
+for_each is a tool for raising the level of abstraction of a range-based for loop. 
+And showing the inside of the lambda within the call to for_each kills this purpose.
+
+ref：https://www.fluentcpp.com/2018/03/30/is-stdfor_each-obsolete/ 
