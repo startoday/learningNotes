@@ -1,5 +1,5 @@
 map, set, multimap, and multiset
-底层是红黑树，一个平衡二叉树
+底层是红黑树（RB-tree/AVLtree），一个平衡二叉树
 不同操作的时间复杂度近似为:
 插入: O(logN)
 查看:O(logN)
