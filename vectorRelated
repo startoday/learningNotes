@@ -122,3 +122,11 @@ ref：https://www.fluentcpp.com/2018/03/30/is-stdfor_each-obsolete/
 ref：https://www.cnblogs.com/caoshenghe/archive/2010/01/31/1660399.html
 
 
+4.对于2D matrix 的初始化
+void reserve (size_type n);
+reserve 只能传一个参数
+所以对于2D vector<vector<int>> res;
+res.reserve(7) 只会reserve 七个 0-size的空vector，这些0 size 的没法直接加东西，只能resize之后再加
+所以prefer的方式是在 declare的时候直接写size
+vector<vector<int>> res(7, vector<int>{}) 即可
+ 
