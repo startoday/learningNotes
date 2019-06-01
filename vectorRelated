@@ -9,7 +9,7 @@ int size_col = v2d[0].size();
 
 对于这种2d empty 只包上面不包下面
 
-尽量使用empty而不是size()==0 来判断容器是否为空
+尽量使用empty而不是size()==0 来判断容器是否为空//empty（）是常数时间，size（）不是
 
 1.insert() （3种）
 A. 插入一个元素
@@ -119,3 +119,6 @@ for_each is a tool for raising the level of abstraction of a range-based for loo
 And showing the inside of the lambda within the call to for_each kills this purpose.
 
 ref：https://www.fluentcpp.com/2018/03/30/is-stdfor_each-obsolete/ 
+ref：https://www.cnblogs.com/caoshenghe/archive/2010/01/31/1660399.html
+
+
