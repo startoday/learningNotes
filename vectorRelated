@@ -136,3 +136,11 @@ vector<vector<int>> res(7, vector<int>{}) 即可
 double max = *max_element(vector.begin(), vector.end());
 double min = *min_element(vector.begin(), vector.end());
  
+ 
+6对于2Dmatrix （mXn) 展开蛇形连接后的index 和原位置的关系
+
+matrix[index/n][index%n]=matrix[行][列]
+
+eg： 一个2by2 matrix index为 1 的那个数在原matrix 中的位置
+matrix[1/2][1%2]=matrix[0][1]    //除完是第几排， 余数是剩的该行index
+ 
