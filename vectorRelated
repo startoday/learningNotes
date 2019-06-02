@@ -129,4 +129,10 @@ reserve 只能传一个参数
 res.reserve(7) 只会reserve 七个 0-size的空vector，这些0 size 的没法直接加东西，只能resize之后再加
 所以prefer的方式是在 declare的时候直接写size
 vector<vector<int>> res(7, vector<int>{}) 即可
+
+
+
+5.找vector里的最大最小值： 传参-range的iterator； return iter 需要用value的时候dereference 一下
+double max = *max_element(vector.begin(), vector.end());
+double min = *min_element(vector.begin(), vector.end());
  
