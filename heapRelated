@@ -1,3 +1,60 @@
+push（） vs emplace()
+
+push() adds a copy of an already constructed object into the quewue as a parameter, 
+it takes an object of the queue's element type.
+
+emplace() constructs a new object in-place at the end of the queue. 
+It takes as parameters the parameters that the queue's element types constructor takes.
+
+If your usage pattern is one where you create a new object and add it to the container, 
+you shortcut a few steps (creation of temporary object and copying it) by using emplace().
+
+这里用stack来进行举例操作
+
+第一点，push 的操作可以直接用于emplace：
+
+    1.直接传入对象（int, double 或者 构造好了的对象）
+
+//假设栈内的数据类型是data
+class data {
+  int a;
+  int b;
+public:
+  data(int x, int y):a(x), b(y) {}
+};
+//push
+data d(1,2);
+S.push(d) 或 S.emplace(d);
+    2.在传入时候构造对象
+
+S.push(data(1,2));
+S.emplce(data(1,2));
+    3.emplace可以直接传入构造对象需要的元素，然后自己调用其构造函数！
+
+S.emplace(1,2)
+    意思是，emplace这样接受新对象的时候，自己会调用其构造函数生成对象然后放在容器内（比如这里传入了1，2，它则会自动调用一次data(1,2))
+
+    而push，只能让其构造函数构造好了对象之后，再使用复制构造函数！
+
+    相当于emplace直接把原料拿进家，造了一个。而push是造好了之后，再复制到自己家里，多了复制这一步。
+
+    所以emplace相对于push，使用第三种方法会更节省内存。
+
+ 
+
+注意：emplace_back(type) 对应 push_back(type)
+
+           emplace(i, type) 对应于 insert(type, i)
+
+           emplace_front(type) 对应于 push_front()
+
+但是！对于stack 和 queue，只有push操作，所以也只有emplace操作，此时它们是相对应的。
+--------------------- 
+作者：Korpse 
+来源：CSDN 
+原文：https://blog.csdn.net/kprogram/article/details/82055673 
+版权声明：本文为博主原创文章，转载请附上博文链接！
+
 优先队列(priority_queue)首先是一个queue，那就是必须在末端推入，必须在顶端取出元素。
 除此之外别无其他存取元素的途径。内部元素按优先级高低排序，优先级高的在前。
 缺省情况下，priority_heap利用一个max-heap完成，后者是一个以vector表现的完全二叉树。
