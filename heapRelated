@@ -3,8 +3,23 @@
 缺省情况下，priority_heap利用一个max-heap完成，后者是一个以vector表现的完全二叉树。
 我们说优先队列不是一个STL容器，它以底部容器而实现，修改了接口，形成另一种性质，这样的东西称之为适配器（adapter）。
 详情参见：http://www.cplusplus.com/reference/stl/priority_queue/
+
+
+bool empty() const 
+size_type size() const
+const_reference top() const 
+        返回顶端元素。不取走。
+void push(const value_type& x)
+         内部调用push_back(x)和push_heap()
+void pop() 
+         内部调用pop_heap()和pop_back();
+
+
+
 --------------------- 
 作者：longhopefor 
 来源：CSDN 
 原文：https://blog.csdn.net/longhopefor/article/details/38303545 
 版权声明：本文为博主原创文章，转载请附上博文链接！
+
+
