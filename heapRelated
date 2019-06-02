@@ -1,0 +1,10 @@
+优先队列(priority_queue)首先是一个queue，那就是必须在末端推入，必须在顶端取出元素。
+除此之外别无其他存取元素的途径。内部元素按优先级高低排序，优先级高的在前。
+缺省情况下，priority_heap利用一个max-heap完成，后者是一个以vector表现的完全二叉树。
+我们说优先队列不是一个STL容器，它以底部容器而实现，修改了接口，形成另一种性质，这样的东西称之为适配器（adapter）。
+详情参见：http://www.cplusplus.com/reference/stl/priority_queue/
+--------------------- 
+作者：longhopefor 
+来源：CSDN 
+原文：https://blog.csdn.net/longhopefor/article/details/38303545 
+版权声明：本文为博主原创文章，转载请附上博文链接！
