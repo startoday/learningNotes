@@ -12,7 +12,7 @@ void MaxAndMin()
 }
 
 
-/* (2) an example of using iterator to print vector
+/*an example of using iterator to print vector
 
 void PrintVector(vector<int> v)
 {
@@ -25,6 +25,33 @@ void PrintVector(vector<int> v)
 }
 
 */
+
+
+(2)upper_bound(),lower_bound()
+  需要应用于sorted array
+  iter upper_bound(first, last, val) 
+  return的是一个iter，是指向第一个range [first,last) 中 比 val 大的 iter.
+  第一个元素就比val大的话返回第一个，index 减完相当于是0，也是size，尾元素也比val小的话返回整列，注意右侧区间不包含  
+  lower_bound()
+  Returns an iterator pointing to the first element in the range [first,last) which does not compare less than val.
+  返回的是第一个不小于
+  
+  
+  例子
+  int myints[] = {10,20,30,30,20,10,10,20};
+  std::vector<int> v(myints,myints+8);           // 10 20 30 30 20 10 10 20
+
+  std::sort (v.begin(), v.end());                // 10 10 10 20 20 20 30 30
+
+  std::vector<int>::iterator low,up;
+  low=std::lower_bound (v.begin(), v.end(), 20); //          
+  up= std::upper_bound (v.begin(), v.end(), 20); //                   
+  
+  //注意可以直接用两个iter相减就得到位置差；减去begin就是index值了；也是size 有多少个
+  std::cout << "lower_bound at position " << (low- v.begin()) << '\n';  //pos 3
+  std::cout << "upper_bound at position " << (up - v.begin()) << '\n';  //pos 6 （30 大于20， 指向第一个30 的index）
+
+  return 0;
 
 (3)sort(),reverse()
 sort(myVector.begin(), myVector.end());
