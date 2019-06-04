@@ -68,11 +68,21 @@ v4.insert(v4.begin(), &v1[0], &v[9]);
 
 D.copy
 vector<int> v5(10);
-
 copy(v5.begin(), &v1[0], &v1[9]);
+vector v(10,0); // 
+vector v3(v.begin(), v.end())
 
 原始数组的元素指针可以作为迭代器来使用。
 原则：尽量使用reserve来减少不必要的内存分配次数。//如果已知大小的话
+
+E.fill初始化
+vector v(10,0); // {0,0,0,0,0,0,0,0,0,0}
+
+F.assign
+v1.assign(10, 0); // v1 設 10 個 0
+v1.assign(v.begin(), v.end()); // v1 複制 v
+v1.assign(v.begin(), v.begin()+5); // 複製 v 前5個元素到 v1
+v1.assign(array, array+5); // 複製 array 前5個元素到 v1
 
 
 3.遍历的几种方式
