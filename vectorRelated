@@ -11,6 +11,8 @@ int size_col = v2d[0].size();
 
 尽量使用empty而不是size()==0 来判断容器是否为空//empty（）是常数时间，size（）不是
 
+vector 不是stable iterator 一些操作， 如删除，会使iter失效
+
 1.insert() （3种）
 A. 插入一个元素
 iterator insert (iterator position, const value_type& val);
@@ -137,10 +139,63 @@ double max = *max_element(vector.begin(), vector.end());
 double min = *min_element(vector.begin(), vector.end());
  
  
-6对于2Dmatrix （mXn) 展开蛇形连接后的index 和原位置的关系
+6.对于2Dmatrix （mXn) 展开蛇形连接后的index 和原位置的关系
 
 matrix[index/n][index%n]=matrix[行][列]
 
 eg： 一个2by2 matrix index为 1 的那个数在原matrix 中的位置
 matrix[1/2][1%2]=matrix[0][1]    //除完是第几排， 余数是剩的该行index
  
+7.取元素的方式
+vec[i] - 存取索引值為 i 的元素值。
+vec.at(i) - 存取索引值為 i 的元素的值，
+vec.front() - 回傳 vector 第一個元素的值。
+vec.back() - 回傳 vector 最尾元素的值。
+***
+用 operator[] 可能會 Segmentation Fault。
+***
+以 at() 存取會做陣列邊界檢查，如果存取越界將會拋出一個例外，
+這是與operator[]的唯一差異。撰寫較嚴肅、安全性較高的程式時使用 at()。
+***
+
+
+
+8. 取得長度/容量的用法
+
+vec.empty() - 如果 vector 內部為空，則傳回 true 值。
+vec.size() - 取得 vector 目前持有的元素個數。
+vec.resize() - 改變 vector 目前持有的元素個數。
+vec.capacity() - 取得 vector 目前可容納的最大元素個數(即拥有的总共空间， 大于等于size）。它通常只會增加，不會因為元素被刪減而隨之減少。
+
+重新配置／重設長度
+vec.reserve() - 如有必要，可改變 vector 的容量大小。
+***
+在眾多的 STL 實做，容量只能增加，不可以減少。
+***
+
+#empty() 和 size()==0
+
+不建議使用 size()==0 判斷容器是否為空，用 empty() 判斷較恰當。
+並不是所有容器的 size() 都是 O(1)，例如 <list> 是 linked list 結構，其 size() 是 O(n)。
+
+
+每個 vector 都有兩個重要的數字：容量 (capacity) 和長度 (size) 。
+
+容量 (capacity) : 是這個 vector 擁有的空間。
+長度 (size) : 是實際儲存了元素的空間大小。capacity 永遠不小於 size。
+
+reserve() 的目的是擴大容量。
+做完時，vector 的長度不變，capacity 只會長大不會縮小，資料所在位置可能會移動 (因為會重配空間)。
+因為 vector 一開始是空的，立刻預留顯然比填了資料後才預留省了拷貝資料的時間。
+
+resize() 的目的是改變 vector 的長度。做完時，vector 的長度會改變為指定的大小，capacity 則視需要調整，確保不小於 size，資料所在位置可能會移動。
+如果變小就擦掉尾巴的資料，如果變大就補零。補零如果會超過容量，會做重配空間的動作。
+
+9. iterator
+vec.begin() - 回傳一個 iterator，它指向 vector 第一個元素。
+vec.end() - 回傳一個 iterator，它指向 vector 最尾端元素的下一個位置（請注意：它不是最末元素）。
+vec.rbegin() - 回傳一個反向 iterator，它指向 vector 最尾端元素的。
+vec.rend() - 回傳一個 iterator，它指向 vector 的第一個元素。
+
+ref: 
+https://mropengate.blogspot.com/2015/07/cc-vector-stl.html
