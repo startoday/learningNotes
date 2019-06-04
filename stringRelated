@@ -7,3 +7,8 @@ string str = to_string(n);
 
 2. char and int conversion
 int x = character - '0'
+
+3. operator +
+只要等式里有一个string就可以一直用string overload的"+",
+但是在开始的两个里必须有有一个是string
+
