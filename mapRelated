@@ -1,7 +1,45 @@
 map以RBTree作为底层容器
--所有元素都是键+值存在
--不允许键重复
+-所有元素都是键+值存在 --key-value 意义映射
+-不允许键重复 -- 重复键的会overwrite
 -所有元素是通过键进行自动排序的
 -map的键是不能修改的，但是其键对应的值是可以修改的
 
-在map中，一个键对应一个值，其中键不允许重复，不允许修改，但是键对应的值是可以修改的
+RBTree的map 查询 删除，插入都是 O（lgN）
+
+--unordered_map (hash base) in C++11 standard  / hash_map not in standard
+
+
+1.declare
+map<string, string > student
+
+2.insert()
+// 用 insert 函數插入 pair
+    student.insert(pair<string, string>("00", "Kai"));
+
+//用 "array" 方式插入
+    student["0033"] = "Taylor";
+    student["456"] = "Justin";
+    
+3.find()
+有的话返回iter位置，没有的话返回end（）
+iter = student.find("r123");
+
+if(iter != student.end())
+       cout<<"Find, the value is"<<iter->second<<endl;
+else
+   cout<<"Do not Find"<<endl;
+   
+   
+4.erase() 删除
+//迭代器刪除
+iter = student.find("r123");
+student.erase(iter);
+
+//用關鍵字刪除
+int n = student.erase("r123");//如果刪除了會返回1，否則返回0
+
+//用迭代器範圍刪除 : 把整個map清空
+student.erase(student.begin(), student.end());
+//等同於student.clear()
+
+
