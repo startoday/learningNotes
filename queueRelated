@@ -3,6 +3,6 @@ que.empty()    //空返回真
 que.push() // 向队列最后加入元素
 que.size() // return size
 que.front() // return首个元素
-que.back() // return最后一个元素
+que.back() // return最后一个元素---比如 在right view里用 可以简化不少代码
 que.pop() // 删除队首元素 return void
 
