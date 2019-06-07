@@ -1,0 +1,22 @@
+1. general （从右到左阅读）
+int a //一个整数a
+int * a1 //一个指向整数的指针a
+int ** a2 //一个指向整数指针的指针a
+
+int a[7] //一个array咯
+int *a[7] // 7 个 int的指针的 array 
+int (*a) [7]
+
+int (*a) (int) //一个function ptr惹，传参和return 都是int 
+int(*a[7])(int)
+
+
+2. function pointer
+void (*fptr)(type_a, type_b) = &func;
+常用的地方
+函式 sort 時傳入判斷準則
+multithread 傳函數進入建立 thread 的 API 中
+callback function (一種事件導向的函式)
+
+ref：https://mropengate.blogspot.com/2017/08/cc-c.html
+
