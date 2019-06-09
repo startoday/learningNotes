@@ -209,3 +209,32 @@ vec.rend() - 回傳一個 iterator，它指向 vector 的第一個元素。
 
 ref: 
 https://mropengate.blogspot.com/2015/07/cc-vector-stl.html
+
+
+10. 取sub vector的两种方式
+A 用range
+template<typename T>
+std::vector<T> slice(std::vector<T> const &v, int m, int n)
+{
+	auto first = v.cbegin() + m;
+	auto last = v.cbegin() + n + 1;
+
+	std::vector<T> vec(first, last);
+	return vec;
+}
+B 用copy
+template<typename T>
+std::vector<T> slice(std::vector<T> &v, int m, int n)
+{
+	std::vector<T> vec(n - m + 1);
+	std::copy(v.begin() + m, v.begin() + n + 1, vec.begin());
+	return vec;
+}
+
+
+
+11.null与vector
+如果是 null 可以直接return {}
+如果是return 一个NULL ptr的 vector 可以直接{NULL}
+
+
