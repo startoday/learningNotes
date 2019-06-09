@@ -12,3 +12,63 @@ int x = character - '0'
 只要等式里有一个string就可以一直用string overload的"+",
 但是在开始的两个里必须有有一个是string
 
+4. ways to initialize a string
+眼花缭乱，五花八门。。。。
+
+std::string s0 ("Initial string"); //used in egs
+
+default (1)	//empty string constructor (default constructor)
+string(); // Constructs an empty string, with a length of zero characters.
+eg: 
+std::string s1; //s1 is empty
+
+copy (2)	// copy constructor
+string (const string& str); // Constructs a copy of str.
+eg: 
+std::string s2 (s0);  //s2-- Initial string
+
+
+substring (3)	 //substring constructor
+string (const string& str, size_t pos, size_t len = npos);
+//Copies the portion of str that begins at the character position pos 
+//and spans len characters (or until the end of str, if either str is too short or if len is string::npos).
+ eg:
+ std::string s3 (s0, 8, 3); // s0 的第八位，长度3 --str
+
+
+from c-string (4)	 //Copies the null-terminated character sequence (C-string) pointed by s.
+string (const char* s);
+eg: 
+std::string s4 ("A character sequence");
+
+from sequence (5)	 // (5) from buffer
+string (const char* s, size_t n); // Copies the first n characters from the array of characters pointed by s.
+eg:
+std::string s5 ("Another character sequence", 12); //长度12（不算结尾的 \n) --Another char
+
+
+fill (6)	
+string (size_t n, char c); //Fills the string with n consecutive copies of character c.
+eg:
+std::string s6a (10, 'x'); // --s6a: xxxxxxxxxx
+std::string s6b (10, 42);      // 42 is the ASCII code for '*' // --std::string s6a (10, 'x');
+
+
+range (7)	
+template <class InputIterator>
+  string  (InputIterator first, InputIterator last); //包前不包后
+  // Copies the sequence of characters in the range [first,last), in the same order.
+eg：
+std::string s7 (s0.begin(), s0.begin()+7); //s7: Initial
+
+
+(8) initializer list
+Copies each of the characters in il, in the same order.
+
+(9) move constructor
+Acquires the contents of str.
+str is left in an unspecified but valid state.
+
+
+
+5. ways to reverse a string
