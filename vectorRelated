@@ -231,7 +231,7 @@ std::vector<T> slice(std::vector<T> &v, int m, int n)
 	return vec;
 }
 
-
+https://www.techiedelight.com/get-slice-sub-vector-from-vector-cpp/
 
 11.null与vector
 如果是 null 可以直接return {}
