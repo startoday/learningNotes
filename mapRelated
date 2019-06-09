@@ -7,7 +7,7 @@ map以RBTree作为底层容器
 RBTree的map 查询 删除，插入都是 O（lgN）
 
 --unordered_map (hash base) in C++11 standard  / hash_map not in standard
-
+###注意！！！map和set这种红黑树的iter 和 vector 不一样，没有overload +， -什么的，使用的时候少给自己找麻烦。。
 
 1.declare
 map<string, string > student
