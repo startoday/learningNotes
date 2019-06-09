@@ -69,6 +69,6 @@ Copies each of the characters in il, in the same order.
 Acquires the contents of str.
 str is left in an unspecified but valid state.
 
-
+ref:http://www.cplusplus.com/reference/string/string/string/
 
 5. ways to reverse a string
