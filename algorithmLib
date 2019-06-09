@@ -48,6 +48,7 @@ void PrintVector(vector<int> v)
   up= std::upper_bound (v.begin(), v.end(), 20); //                   
   
   //注意可以直接用两个iter相减就得到位置差；减去begin就是index值了；也是size 有多少个
+  #####注意，这种减法仅限于vector的！像map和set这种tree的iterator不认直接减的！
   std::cout << "lower_bound at position " << (low- v.begin()) << '\n';  //pos 3
   std::cout << "upper_bound at position " << (up - v.begin()) << '\n';  //pos 6 （30 大于20， 指向第一个30 的index）
 
