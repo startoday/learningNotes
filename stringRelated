@@ -71,4 +71,9 @@ str is left in an unspecified but valid state.
 
 ref:http://www.cplusplus.com/reference/string/string/string/
 
-5. ways to reverse a string
+5.  reverse a string
+    eg: 
+    string str = "geeksforgeeks"; 
+    reverse(str.begin(), str.end()); //skeegrofskeeg
+    
+ref:https://www.geeksforgeeks.org/reverse-a-string-in-c-cpp-different-methods/
