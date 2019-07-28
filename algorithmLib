@@ -387,3 +387,7 @@ void Heap()
 比如reverse 一个string：
 reverse(str.begin(), str.end()); 
 
+
+
+20. size()
+就是O（1） 别犹豫，就是用！
