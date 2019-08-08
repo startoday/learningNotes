@@ -1,0 +1,6 @@
+auto glambda = [](auto a, auto&& b) { return a < b; };
+
+1. for a sort function example:
+sort(A.begin(), A.end(), [key](int c, int d){
+            return key[c] < key[d];
+        });
