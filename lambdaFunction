@@ -1,6 +1,42 @@
 auto glambda = [](auto a, auto&& b) { return a < b; };
+0.
+Syntax
+[ captures ] <tparams>(optional)(c++20) ( params ) specifiers exception attr -> ret requires(optional)(c++20) { body }	(1)	
+[ captures ] ( params ) -> ret { body }	(2)	
+[ captures ] ( params ) { body }	(3)	
+[ captures ] { body }	(4)	
+1) Full declaration.
+
+2) Declaration of a const lambda: the objects captured by copy are const in the lambda body.
+
+3) Omitted trailing-return-type: the return type of the closure's operator() is deduced from return statements as if for a function whose return type is declared auto.
+
+4) Omitted parameter list: function takes no arguments, as if the parameter list was (). This form can only be used if none of constexpr, mutable, exception specification, attributes, or trailing return type is used.
+
+
+captures：a comma-separated list of zero or more captures, optionally beginning with a capture-default.
+需要捕捉的东西（可以是一个比较时需要用到的array） 如果是global，static的情况下不需要传递(  []  )
+A lambda expression can use a variable without capturing it if the variable is a non-local variable 
+or has static or thread local storage duration (in which case the variable cannot be captured), 
+or is a reference that has been initialized with a constant expression.
+A lambda expression can read the value of a variable without capturing it 
+--if the variable has const non-volatile integral or enumeration type and has been initialized with a constant expression, 
+or is constexpr and has no mutable members.
+
+<tparams> : 限制generic，可用于C++20之后 和<params> 一旦auto就会进入generic模式
+<tparams>(C++20):a template parameter list (in angle brackets), used to provide names to the template parameters of a generic lambda (see ClosureType::operator() below). 
+Like in a template declaration, the template parameter list may be followed by an optional requires-clause, which specifies the constraints on the template arguments. 
+If provided, the template parameter list cannot be empty (<> is not allowed).
+params: The list of parameters, as in named functions, except that default arguments are not allowed (until C++14). 
+If auto is used as a type of a parameter, the lambda is a generic lambda. (since C++14)
+
 
 1. for a sort function example:
 sort(A.begin(), A.end(), [key](int c, int d){
             return key[c] < key[d];
         });
+
+
+
+2.function<void(int)>  print_fun = [](int item){cout<<item<<endl; }; //int  item函数参数
+c.erase(std::remove_if(c.begin(), c.end(), [x](int n) { return n < x; } ), c.end());
