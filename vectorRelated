@@ -238,3 +238,11 @@ https://www.techiedelight.com/get-slice-sub-vector-from-vector-cpp/
 如果是return 一个NULL ptr的 vector 可以直接{NULL}
 
 
+12. 用range的方式initial vector， 不像python一样简单好写
+https://stackoverflow.com/questions/11965732/set-stdvectorint-to-a-range 
+
+You could use std::iota if you have C++11 support or are using the STL:
+std::vector<int> v(14);
+std::iota(v.begin(), v.end(), 3);
+
+
