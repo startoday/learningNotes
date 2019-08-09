@@ -58,3 +58,16 @@ Eg:
   itup=mymap.upper_bound ('d');   // itup points to e (not d!) upper bound是要大于的第一个
 
   mymap.erase(itlow,itup);        // erases [itlow,itup)
+
+6.map 中的 边循环边删除
+--删除之后iterator失效了必须重搞
+for(auto iter1 = theMap.begin(); iter1 != theMap.end(); )
+{
+	if(iter1->second == xxx)
+	{
+		theMap.erase(iter1++); //#1 
+	}else
+	{
+		++iter1;
+	}
+} 
