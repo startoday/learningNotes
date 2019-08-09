@@ -62,3 +62,9 @@ sort(A.begin(), A.end(), [key](int c, int d){
 
 2.function<void(int)>  print_fun = [](int item){cout<<item<<endl; }; //int  item函数参数
 c.erase(std::remove_if(c.begin(), c.end(), [x](int n) { return n < x; } ), c.end());
+
+
+3. sort map by value lambda function
+[](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2) {
+            return elem1.second < elem2.second;
+};
