@@ -68,3 +68,5 @@ c.erase(std::remove_if(c.begin(), c.end(), [x](int n) { return n < x; } ), c.end
 [](std::pair<std::string, int> elem1 ,std::pair<std::string, int> elem2) {
             return elem1.second < elem2.second;
 };
+4. same 2d array, sort by arr[x][0]
+sort(logs.begin(), logs.end(), [] (const vector<int> &a, const vector<int> &b) {return a[0] < b[0];});
