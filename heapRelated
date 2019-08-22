@@ -1,4 +1,21 @@
-push（） vs emplace()
+1. 自定义qp 是max（default） or min——heap
+#way1: 
+#Use std::greater as the comparison function:
+std::priority_queue<int, std::vector<int>, std::greater<int> > my_min_heap;
+#way2： define a comparator
+ #include <iostream>  
+ #include <queue>  
+ using namespace std;  
+ struct compare  {  
+   bool operator()(const int& l, const int& r) {  
+       return l > r;  
+   }  
+ };  
+ int main() {  
+     priority_queue<int,vector<int>, compare > pq;  
+ }
+
+2.push（） vs emplace()
 
 push() adds a copy of an already constructed object into the quewue as a parameter, 
 it takes an object of the queue's element type.
