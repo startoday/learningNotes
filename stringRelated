@@ -107,3 +107,58 @@ int main ()
   std::cout << str << '\n';
   return 0;
 }
+
+
+7.parse string
+how to split a string by character?
+A. 先replace str with whitespace then use string stream
+string str = "102:330:3133:76531:451:000:12:44412";
+std::replace(str.begin(), str.end(), ':', ' ');  // replace ':' by ' '
+
+vector<int> array;
+stringstream ss(str);
+int temp;
+while (ss >> temp)
+    array.push_back(temp); // done! now array={102,330,3133,76531,451,000,12,44412}
+    
+B.isstringstream 去    
+std::istringstream iss(str);
+char c; // dummy character for the colon
+int a[8];
+iss >> a[0];
+for (int i = 1; i < 8; i++)
+    iss >> c >> a[i];
+ 
+C.如果知道有几个token的话 比如“ ：” 是token
+std::sscanf(str, "%d:%d:%d:%d:%d:%d:%d:%d", &a1, &a2, &a3, &a4, &a5, &a6, &a7, &a8);
+
+D利用stream + getline
+//例子中的vector<int> 换成vector string即可
+std::vector<int> split(const std::string &s, char delim) {
+    std::vector<int> elems;
+    std::stringstream ss(s);
+    std::string number;
+    while(std::getline(ss, number, delim)) {
+        elems.push_back(std::stoi(number));
+    }
+    return elems;
+}
+
+// use with:
+const std::string numbers("102:330:3133:76531:451:000:12:44412");
+std::vector<int> numbers = split(numbers, ':');
+
+E. use boost and split
+#include <string>
+#include <boost/algorithm/string.hpp>
+ 
+template <class Container>
+void split5(const std::string& str, Container& cont,
+              const std::string& delims = " ")
+{
+    boost::split(cont, str, boost::is_any_of(delims));
+}
+
+
+#其他可行方法： 
+ref： http://www.martinbroadhurst.com/how-to-split-a-string-in-c.html
