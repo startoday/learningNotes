@@ -1,0 +1,28 @@
+1.examples of deep copy
+
+A.copy
+vector<int> array{3,5,2,6,4};
+vector<int> outArray(array);
+
+B.use " =" to assign
+vector<int> array{3,5,2,6,4};
+vector<int> outArray;
+outArray = array;
+
+2. when things are cleared for the old one 
+A.swap
+会清空原vector数组
+
+vector<int> array{3,5,2,6,4};
+vector<int> outArray;//设为空
+outArray.swap(array);//清空array数组
+
+vector<int> array{3, 5, 2, 6, 4};
+vector<int> outArray{ 1,2,3 };
+outArray.swap(array);//outArray={3,5,2,6,4}；array={1,2,3}
+
+B.assign()函数（清空并深复制）
+vector<int> array{3, 5, 2, 6, 4};
+vector<int> outArray{ 1,2,3 };
+outArray.assign(array.begin(),array.end());//清空原数据，赋予新数据={3,5,2,6,4}
+outArray.assign(5, 0);//5个0，清空原数据={0,0,0,0,0,}
