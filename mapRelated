@@ -1,4 +1,33 @@
-map以RBTree作为底层容器
+0.将map按照value排序， map没有像vector一样的sort（）函数
+方法. 将map中的key和value分别存放在一个pair类型的vector中，然后利用vector的sort函数排序:
+bool cmp(const pair<int,int> &p1,const pair<int,int> &p2)//要用常数，不然编译错误 
+{
+	return p1.second<p2.second;
+}
+int main(void)  
+{  
+   map<int,int> mp;
+   mp[1]=4;
+   mp[2]=3;
+   mp[3]=2;
+   mp[4]=1;
+   vector<pair<int,int> > arr;
+   for (map<int,int>::iterator it=mp.begin();it!=mp.end();++it)
+   {
+   	cout<<it->first<<'\t'<<it->second<<endl;
+   	arr.push_back(make_pair(it->first,it->second));
+   }
+   sort(arr.begin(),arr.end(),cmp);
+   for (vector<pair<int,int> >::iterator it=arr.begin();it!=arr.end();++it)
+   {
+   	cout<<it->first<<'\t'<<it->second<<endl;
+   }
+   return 0;  
+}  
+
+#https://blog.csdn.net/acidgl8757/article/details/17416439
+
+1. map以RBTree作为底层容器
 -所有元素都是键+值存在 --key-value 意义映射
 -不允许键重复 -- 重复键的会overwrite
 -所有元素是通过键进行自动排序的
