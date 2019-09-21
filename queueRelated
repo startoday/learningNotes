@@ -6,3 +6,12 @@ que.front() // return首个元素
 que.back() // return最后一个元素---比如 在right view里用 可以简化不少代码
 que.pop() // 删除队首元素 return void
 
+2.queue 中是可以push NULL的，也count size
+int main() {
+    queue<int> q;
+    q.push(NULL);
+    q.push(1);
+    q.push(NULL);
+    cout<<q.size(); //3
+    return 0;
+}
