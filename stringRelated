@@ -162,3 +162,18 @@ void split5(const std::string& str, Container& cont,
 
 #其他可行方法： 
 ref： http://www.martinbroadhurst.com/how-to-split-a-string-in-c.html
+
+
+
+8. atoi() vs stoi()
+Basically the C function atoi() converts C-strings (nul terminated character arrays) to an integer. 
+The C++ stoi() converts the C++ string to an integer. 
+Note that the atoi() function will silently fail if the string is not convertible to an int, while by default stoi() will throw an exception.
+有一个tricky的点是
+如果atoi 处理的串是‘0’，那么无法知道是失败了还是咋的
+并且对于atoi（）：
+No-throw guarantee: this function never throws exceptions.
+If str does not point to a valid C-string, or if the converted value would be out of the range of values representable by an int, it causes undefined behavior.
+不知道会怎么样。。All in all 尽量用stoi 或者其他的string function， 毕竟都是c++的哇！ atoi是c的！！
+
+
